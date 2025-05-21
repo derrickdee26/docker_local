@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Deploying webapp containers..."
-docker pull derrickdee/acadaweb:latest
+docker pull derrickdee/acada:latest
 
 echo "Creating network"
 docker network create acada-app
@@ -9,7 +9,7 @@ docker network create acada-app
 for i in {1..6}; 
 do
 docker stop acada-webapp$i ; docker rm -f acada-webapp$i || true
-docker run -d --name acada-webapp$i --hostname acada-webapp$i --network acada-app derrickdee/acadaweb:latest;
+docker run -d --name acada-webapp$i --hostname acada-webapp$i --network acada-app derrickdee/acada:latest;
 echo "Deploying webapp$i container done"
 done
 
